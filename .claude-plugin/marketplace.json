@@ -1,0 +1,27 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "reveel",
+  "owner": {
+    "name": "Reveel",
+    "email": "support@reveel.guide",
+    "url": "https://reveel.fi"
+  },
+  "metadata": {
+    "description": "Reveel plugins for Claude Code and compatible AI clients."
+  },
+  "plugins": [
+    {
+      "name": "reveel",
+      "source": "./plugins/reveel",
+      "description": "Create and manage content in Reveel.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Reveel",
+        "email": "support@reveel.guide",
+        "url": "https://reveel.fi"
+      },
+      "category": "Productivity",
+      "tags": ["reveel", "content", "mcp"]
+    }
+  ]
+}

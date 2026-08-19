@@ -1,0 +1,11 @@
+interface:
+  display_name: "Reveel"
+  short_description: "Create and improve Reveel content"
+  default_prompt: "Use $reveel to turn these notes into an article."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "reveel"
+      description: "Authenticated Reveel content tools"
+      transport: "streamable_http"
+      url: "https://api.reveel.fi/mcp"

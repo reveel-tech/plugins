@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "reveel",
+  "version": "1.0.0",
+  "description": "Create and manage content in Reveel.",
+  "author": {
+    "name": "Reveel",
+    "email": "support@reveel.guide",
+    "url": "https://app.reveel.fi"
+  },
+  "homepage": "https://app.reveel.fi",
+  "license": "Proprietary",
+  "keywords": ["reveel", "mcp", "content management", "digital guides"]
+}

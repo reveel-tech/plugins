@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "reveel": {
+      "type": "http",
+      "url": "https://api.reveel.fi/mcp",
+      "oauth_resource": "https://api.reveel.fi/mcp"
+    }
+  }
+}

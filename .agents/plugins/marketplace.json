@@ -1,0 +1,20 @@
+{
+  "name": "reveel",
+  "interface": {
+    "displayName": "Reveel"
+  },
+  "plugins": [
+    {
+      "name": "reveel",
+      "source": {
+        "source": "local",
+        "path": "./plugins/reveel"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "reveel",
+  "version": "1.0.0",
+  "description": "Create and manage content in Reveel.",
+  "author": {
+    "name": "Reveel",
+    "email": "support@reveel.guide",
+    "url": "https://reveel.fi"
+  },
+  "homepage": "https://reveel.fi",
+  "license": "Proprietary",
+  "keywords": ["reveel", "mcp", "digital guides"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Reveel",
+    "shortDescription": "Create and improve content in Reveel",
+    "longDescription": "Turn source material into polished content, improve existing pages, and organize the structure and presentation of a Reveel workspace.",
+    "developerName": "Reveel",
+    "category": "Productivity",
+    "capabilities": ["Create", "Edit", "Organize"],
+    "websiteURL": "https://reveel.fi",
+    "privacyPolicyURL": "https://reveel.fi/privacy-policy",
+    "termsOfServiceURL": "https://reveel.fi/terms-conditions",
+    "defaultPrompt": [
+      "Turn these notes into an article.",
+      "Can you improve the writing in this article?",
+      "Create a guide from this list of places."
+    ],
+    "brandColor": "#00CBB9",
+    "composerIcon": "./assets/reveel-icon.png",
+    "logo": "./assets/reveel-logo.png",
+    "logoDark": "./assets/reveel-logo.png"
+  },
+  "mcpServers": "./.mcp.json"
+}
