@@ -35,9 +35,9 @@ Treat finding content and sharing content as separate intents.
 
 - Never include a Reveel public URL in ordinary prose or Markdown unless the user explicitly asks for the raw URL. Name search and inspection results without turning their titles into links.
 - Do not fetch or prepare sharing merely because the user asked to find, list, inspect, or identify content. Offer to prepare a share link or QR code only when that would be a useful next step.
-- When the user asks only for a direct link or only for a QR code, use `list_links` to resolve the resource's exact default link for that surface, then use `show_link_preview`.
-- Use `show_share_preview` only when the user asks for sharing options, both a direct link and QR code, or the combined presentation. Do not duplicate its public URL in the surrounding response.
-- When the user asks to inspect or manage one existing link or QR code, use `get_link` or `list_links` and the specific-link presentation instead of sharing the underlying resource.
+- When the user asks for a resource's link, QR code, sharing options, or otherwise asks to share it, use `show_share_preview`. It already presents the default direct URL and QR code together and preserves a GS1/Link choice when available. Do not duplicate its public URL in the surrounding response.
+- Use `show_link_preview` only when the user asks to inspect, preview, or manage one particular existing Link, or explicitly asks for QR artwork without its URL. Resolve that exact Link with `get_link` or `list_links` first.
+- If the user explicitly asks for only the raw URL with no preview, resolve the default direct Link and provide only its URL.
 
 ## Choose the right view
 
@@ -48,10 +48,10 @@ Treat finding content and sharing content as separate intents.
 - Use `get_link` to resolve a pasted Reveel URL, slug, link ID, or the URL encoded by a QR code.
 - Use `list_links` to inspect every default and custom direct/QR link for a resource, or to browse
   custom links across a team.
-- Use `show_share_preview` only when the user asks for sharing options, both forms, or the combined presentation. It presents the default share link and QR code together.
-- Use `show_link_preview` after resolving an exact link when the user asks to show, preview, open,
-  or verify it. The card is for link metadata and QR scannability; Studio remains the full editor and
-  authoritative styled preview.
+- Use `show_share_preview` for a resource-level link, QR code, or sharing request. It presents the default direct URL and QR code together, with GS1 and Link variants when available.
+- Use `show_link_preview` after resolving an exact saved Link when the user asks to inspect, preview,
+  or verify that Link, or explicitly requests QR artwork without its URL. The card is for link metadata
+  and QR scannability; Studio remains the full editor and authoritative styled preview.
 - Use `get_default_layout` for an exact thing or guide's ordered default-layout element index and allowed insertion types.
 - Use `get_layout_element` for an exact element's text, settings, enabled state, order, and media.
 - Use `inspect_classification_options` for team categories, tags, groups, category-library matches, and current assignments.
