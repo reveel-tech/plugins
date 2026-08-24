@@ -21,7 +21,7 @@ Do not independently choose a browser for Reveel work. Use a browser only when t
 2. Call `list_teams` only when no active team exists, the user asks which teams are accessible, the user asks to choose or switch teams, or the active team may no longer be valid. If the user only asks which teams are accessible, return that result without `show_team_picker`.
 3. When the user asks to select, choose, or switch teams and multiple teams are available, call `show_team_picker` with every exact returned team ID and wait for the selection. Before any other team-scoped operation, do the same when no active team exists and multiple teams remain plausible. Use the sole accessible team directly.
 4. Use the exact returned `team_id` on every Reveel call.
-5. Use the requested BCP-47 `language_code`. Preserve other language variants unless the user asks to change them.
+5. Use the requested two- or three-letter lowercase `language_code`, such as `en`, `fi`, or `sme`. Localized reads may fall back to AI text and then source-language text when the requested translation is missing; do not treat returned text alone as proof that an authored translation exists. Preserve other language variants unless the user asks to change them.
 6. Resolve named resources with `search_things` or `search_guides`. An exact ID returned in the current task can be used directly.
 
 Treat team IDs as internal routing values. Do not include them in normal user-facing replies or
@@ -43,7 +43,7 @@ Treat finding content and sharing content as separate intents.
 
 - Use `search_things` and `search_guides` to browse or resolve names.
 - Search results are paginated. When complete discovery matters, advance `page` while `has_more` is true.
-- Use `get_thing` for a thing's type, location, root media, and media across all layouts.
+- Use `get_thing` for a thing's type, location, and root media.
 - Use `get_guide` for guide membership and `guide_content_id` values.
 - Use `get_link` to resolve a pasted Reveel URL, slug, link ID, or the URL encoded by a QR code.
 - Use `list_links` to inspect every default and custom direct/QR link for a resource, or to browse
@@ -52,7 +52,8 @@ Treat finding content and sharing content as separate intents.
 - Use `show_link_preview` after resolving an exact link when the user asks to show, preview, open,
   or verify it. The card is for link metadata and QR scannability; Studio remains the full editor and
   authoritative styled preview.
-- Use `inspect_editor_state` for editable default-layout elements, text, settings, root media, and exact element IDs.
+- Use `get_default_layout` for an exact thing or guide's ordered default-layout element index and allowed insertion types.
+- Use `get_layout_element` for an exact element's text, settings, enabled state, order, and media.
 - Use `inspect_classification_options` for team categories, tags, groups, category-library matches, and current assignments.
 
 Do not repeatedly inspect state already returned by a tool. Inspect again only when a multi-step edit changes ordering or IDs needed by the next step, or when an outcome is uncertain.
@@ -71,8 +72,8 @@ selection or “Edit in chat” action.
 - A newly created thing includes one initial rich-text element. Fill it with the first section, then add the remaining peer sections through the normal layout-element creation workflow. When a normal tool accepts multiple items, send them together instead of emitting repeated calls.
 - Update names and native thing/guide settings through the normal metadata update workflows, batching independent resources together. Metadata updates are sparse except that a supplied content-settings object replaces that resource's complete settings object.
 - Places display their saved location natively when location preview is enabled. Never add a location-map element to a place. A map element is a guide-only collection overview and should be added only when useful or requested.
-- Use `inspect_editor_state`'s `allowed_insert_element_types` as the authoritative insertion set. Do not recreate native resource fields as layout elements.
-- A resource may have default and custom layouts. Current-page inspection follows the active layout; explicit inspection lists every layout and can select one by ID. Preserve the current default unless the user asks to replace it, and use exact layout IDs for custom-layout edits.
+- Use `get_default_layout`'s `allowed_insert_element_types` as the authoritative insertion set. Do not recreate native resource fields as layout elements.
+- Layout reads and element edits operate on the resource's default layout. Do not imply that custom layouts can be inspected or edited through the current MCP tools.
 - A map layout element controls whether a guide page renders its map; map layers and map-item placements control the map's actual data. Inspect the resource's maps before changing an exact layer. Adding a map item does not add guide membership, so keep guide content and map placement in sync when the user intends both.
 - Treat `set_layout_text_fields` and `set_layout_element_settings` as sparse patches. Omit values that should remain unchanged. List-valued settings replace the complete list.
 - Use `set_link_tagline` only for a link element's tagline.
