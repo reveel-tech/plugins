@@ -3,7 +3,7 @@
   "mcpServers": {
     "reveel": {
       "type": "streamable-http",
-      "url": "https://api.reveel.fi/mcp"
+      "url": "https://server.eu-central-1.reveel.guide/mcp"
     }
   }
 }

@@ -2,8 +2,8 @@
   "mcpServers": {
     "reveel": {
       "type": "http",
-      "url": "https://api.reveel.fi/mcp",
-      "oauth_resource": "https://api.reveel.fi/mcp"
+      "url": "https://server.eu-central-1.reveel.guide/mcp",
+      "oauth_resource": "https://server.eu-central-1.reveel.guide/mcp"
     }
   }
 }

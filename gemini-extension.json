@@ -4,7 +4,7 @@
   "description": "Create and manage content in Reveel.",
   "mcpServers": {
     "reveel": {
-      "httpUrl": "https://api.reveel.fi/mcp"
+      "httpUrl": "https://server.eu-central-1.reveel.guide/mcp"
     }
   }
 }

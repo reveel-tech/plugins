@@ -8,4 +8,4 @@ dependencies:
       value: "reveel"
       description: "Authenticated Reveel content tools"
       transport: "streamable_http"
-      url: "https://api.reveel.fi/mcp"
+      url: "https://server.eu-central-1.reveel.guide/mcp"

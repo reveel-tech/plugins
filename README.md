@@ -76,7 +76,7 @@ gemini extensions install https://github.com/reveel-tech/plugins
 If your assistant supports remote MCP servers, open its MCP, Integrations, or Connectors settings and add a remote server with this URL:
 
 ```text
-https://api.reveel.fi/mcp
+https://server.eu-central-1.reveel.guide/mcp
 ```
 
 Complete the assistant’s sign-in flow when prompted. Direct MCP connections provide Reveel tools; marketplace installs are recommended when available because they also include Reveel’s built-in guidance.
