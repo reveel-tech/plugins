@@ -53,7 +53,7 @@ Treat finding content and sharing content as separate intents.
   or verify that Link, or explicitly requests QR artwork without its URL. The card is for link metadata
   and QR scannability; Studio remains the full editor and authoritative styled preview.
 - Use `get_default_layout` for an exact thing or guide's ordered default-layout element index and allowed insertion types.
-- Use `get_layout_element` for an exact element's text, settings, enabled state, order, and media.
+- Use `get_layout_element` for an exact element's typed editable state, enabled state, and order.
 - Use `inspect_classification_options` for team categories, tags, groups, category-library matches, and current assignments.
 
 Do not repeatedly inspect state already returned by a tool. Inspect again only when a multi-step edit changes ordering or IDs needed by the next step, or when an outcome is uncertain.
@@ -77,8 +77,8 @@ selection or “Edit in chat” action.
 - A guide map is enabled by having at least one map layer. Call `list_maps` first; if it returns no layers, call `create_map` to enable the guide map and create its first/default layer before adding map items. Otherwise use the existing default layer unless the user identifies another exact layer.
 - Map-item placement is separate from guide membership and visible content-section placement. For normal guide-map content, ensure all three are present by using `add_guide_content` with the manual content-section ID and `add_map_items` with the exact map ID. Use map-only placement only when the user explicitly requests it.
 - A map layout element is an optional guide-only overview embedded in the layout. It does not enable the guide map or create its first layer, and should be added only when the collection benefits from one or the user asks for it.
-- Treat `set_layout_text_fields` and `set_layout_element_settings` as sparse patches. Omit values that should remain unchanged. List-valued settings replace the complete list.
-- Use `set_link_tagline` only for a link element's tagline.
+- Use the matching typed element variant with `insert_layout_element` and `update_layout_element`. Treat updates as sparse patches and omit values that should remain unchanged; the variant itself is authoritative for that element type.
+- Use the dedicated content-section and media tools for workflows that are not part of the typed element patch.
 - Positions are zero-based. Sequence layout inserts and moves that affect the same layout, using each preceding result as the new state.
 
 Link records are separate from link layout elements. A link's `surface` is `direct` or `qr`, while
